@@ -5,40 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles/style.css">
   
   <title>Frontend Mentor | Tip calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
+
 <body>
+  <header class="title">
+    <img src="./images/logo.svg" alt="">
+  </header>
 
-  Bill
+  <main class="main-content">
+    <section class="input-section">
+      <div class="bill section-wrapper">
+        <h3 class="section-name">Bill</h3>
+        <span class="input-icon"><img src="./images/icon-dollar.svg" alt=""></span>
+        <input type="text" name="bill-input" id="bill-form" class="input-bar" placeholder="0">
+      </div>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+      <div class="tip-percent section-wrapper">
+        <h3 class="section-name">Select Tip %</h3>
+        <div class="option-wrapper">
+          <button class="tip-options">5%</button>
+          <button class="tip-options">10%</button>
+          <button class="tip-options">15%</button>
+          <button class="tip-options">25%</button>
+          <button class="tip-options">50%</button>
+          <input type="text" name="custom-tip" id="custom-tip" class="tip-options" placeholder="Custom">
+        </div>
+      </div>
 
-  Number of People
+      <div class="number-of-people section-wrapper">
+        <h3 class="section-name">Number of People</h3>
+        <span class="input-icon"><img src="./images/icon-person.svg" alt=""></span>
+        <input type="text" name="number-people" id="number-people" class="input-bar" placeholder="0">
+      </div>
+    </section>
 
-  Tip Amount
-  / person
+    <section class="result-section">
+      <div class="result">
+        <div class="result-wrapper">
+          <div class="result-desc">
+            <h3 class="result-name">Tip Amount</h3>
+            <p>/ person</p>
+          </div>
+          <div class="result-value" id="result-1">$0.00</div>
+        </div>
 
-  Total
-  / person
-
-  Reset
+        <div class="result-wrapper">
+          <div class="result-desc">
+            <h3>Total</h3>
+            <p>/ person</p>
+          </div>
+          <div class="result-value" id="result-2">$0.00</div>
+        </div>
+      </div>
+      <button class="reset-btn">RESET</button>
+    </section>
+  </main>
   
-  <div class="attribution">
+  
+  <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    Coded by <a href="#">Revin Dennis Ramadhan</a>.
+  </div> -->
 </body>
 </html>

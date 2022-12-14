@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+//font-family: 'Space Mono', monospace;
+
+@import './var';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: $light-grayish-cyan;
+    display: flex;
+    align-items: center;
+    flex-direction: column;  
+}
+body,button,input{
+    font-family: 'Space Mono', monospace;
+}
+button,input,.result-value{
+    font-size: 24px;
+}
+input{
+    text-align: right;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    border: none;
+    color: $very-dark-cyan;
+    width: 100%;
+    &:hover{
+        cursor: pointer;
+    }
+    &:focus{
+        outline: none;
+        border: solid 3px $strong-cyan;
+    }
+}
+.input-bar::placeholder{
+    color: $grayish-cyan;
+    opacity: 1;
+}
+#custom-tip::placeholder{
+    color: $dark-grayish-cyan;
+}
+.input-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+header{
+    margin-top: 3rem;
+}
+.section-name{
+    color: $dark-grayish-cyan;
+    font-size: 16px;
+}
+
+
+.main-content{
+    margin-top: 2.5rem;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 375px;
+    background-color: $white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    .input-section{
+        padding: 0.5rem;
+    }
+    .section-wrapper{
+        position: relative;
+        margin-bottom: 2rem;
+        h3{
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .option-wrapper{
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        button{
+            border-radius: 5px;
+            border: none;
+            color: $light-grayish-cyan;
+            background-color: $very-dark-cyan;
+            height: 50px;
+            &:hover{
+                cursor: pointer;
+                background-color: $light-grayish-cyan;
+                color: $very-dark-cyan;
+            }
+        }
+    }
+
+    .result-section{
+        background-color: $very-dark-cyan;
+        border-radius: 20px;
+        padding: 1.5rem;
+        h3{
+            font-size: 16px;
+            color: $light-grayish-cyan;
+        }
+        p{
+            color: $grayish-cyan;
+            font-size: 12px;
+            word-spacing: 1px;
+        }
+        .result-value{
+            font-size: 32px;
+            color: $strong-cyan;
+        }
+        .result{
+            margin-top: 1rem;
+        }
+        .result-wrapper{
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .reset-btn{
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            padding: 0.5rem;
+            background-color: $strong-cyan;
+            color: $very-dark-cyan;
+            font-size: 20px;
+            &:hover{
+                cursor: pointer;
+                background-color: $light-grayish-cyan;
+                color: $very-dark-cyan;
+            }
+        }
+    }
+    
+}

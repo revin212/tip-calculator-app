@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: hsl(185deg, 41%, 84%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+body, button, input {
+  font-family: "Space Mono", monospace;
+}
+
+button, input, .result-value {
+  font-size: 24px;
+}
+
+input {
+  text-align: right;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  border: none;
+  color: hsl(183deg, 100%, 15%);
+  width: 100%;
+}
+input:hover {
+  cursor: pointer;
+}
+input:focus {
+  outline: none;
+  border: solid 3px hsl(172deg, 67%, 45%);
+}
+
+.input-bar::-moz-placeholder {
+  color: hsl(184deg, 14%, 56%);
+  opacity: 1;
+}
+
+.input-bar:-ms-input-placeholder {
+  color: hsl(184deg, 14%, 56%);
+  opacity: 1;
+}
+
+.input-bar::placeholder {
+  color: hsl(184deg, 14%, 56%);
+  opacity: 1;
+}
+
+#custom-tip::-moz-placeholder {
+  color: hsl(186deg, 14%, 43%);
+}
+
+#custom-tip:-ms-input-placeholder {
+  color: hsl(186deg, 14%, 43%);
+}
+
+#custom-tip::placeholder {
+  color: hsl(186deg, 14%, 43%);
+}
+
+.input-icon {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+
+header {
+  margin-top: 3rem;
+}
+
+.section-name {
+  color: hsl(186deg, 14%, 43%);
+  font-size: 16px;
+}
+
+.main-content {
+  margin-top: 2.5rem;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 375px;
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+.main-content .input-section {
+  padding: 0.5rem;
+}
+.main-content .section-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.main-content .section-wrapper h3 {
+  margin-bottom: 0.5rem;
+}
+.main-content .option-wrapper {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+.main-content .option-wrapper button {
+  border-radius: 5px;
+  border: none;
+  color: hsl(185deg, 41%, 84%);
+  background-color: hsl(183deg, 100%, 15%);
+  height: 50px;
+}
+.main-content .option-wrapper button:hover {
+  cursor: pointer;
+  background-color: hsl(185deg, 41%, 84%);
+  color: hsl(183deg, 100%, 15%);
+}
+.main-content .result-section {
+  background-color: hsl(183deg, 100%, 15%);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+.main-content .result-section h3 {
+  font-size: 16px;
+  color: hsl(185deg, 41%, 84%);
+}
+.main-content .result-section p {
+  color: hsl(184deg, 14%, 56%);
+  font-size: 12px;
+  word-spacing: 1px;
+}
+.main-content .result-section .result-value {
+  font-size: 32px;
+  color: hsl(172deg, 67%, 45%);
+}
+.main-content .result-section .result {
+  margin-top: 1rem;
+}
+.main-content .result-section .result-wrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-content .result-section .reset-btn {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem;
+  background-color: hsl(172deg, 67%, 45%);
+  color: hsl(183deg, 100%, 15%);
+  font-size: 20px;
+}
+.main-content .result-section .reset-btn:hover {
+  cursor: pointer;
+  background-color: hsl(185deg, 41%, 84%);
+  color: hsl(183deg, 100%, 15%);
+}/*# sourceMappingURL=style.css.map */
