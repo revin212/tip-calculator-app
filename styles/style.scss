@@ -33,6 +33,7 @@ input{
     }
     &:focus{
         outline-color: $strong-cyan;
+        border: none;
     }
 }
 .input-bar::placeholder{
