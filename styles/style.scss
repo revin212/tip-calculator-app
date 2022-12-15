@@ -35,7 +35,7 @@ input{
     //     outline: 2px solid $strong-cyan;
     // }
 }
-input[type=text]:focus{
+input[type=text].focus-style:focus{
     outline: 2px solid $strong-cyan;
 }
 
