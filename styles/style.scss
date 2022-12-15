@@ -31,13 +31,11 @@ input{
     &:hover{
         cursor: pointer;
     }
-    // &:focus{
-    //     outline: 2px solid $strong-cyan;
-    // }
+    &:focus{
+        outline: 1px solid $strong-cyan;
+    }
 }
-input[type=text].focus-style:focus{
-    outline: 2px solid $strong-cyan;
-}
+
 
 .input-bar::placeholder{
     color: $grayish-cyan;
