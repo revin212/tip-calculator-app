@@ -32,8 +32,7 @@ input{
         cursor: pointer;
     }
     &:focus{
-        outline-color: $strong-cyan;
-        border: none;
+        outline: 2px solid $strong-cyan;
     }
 }
 .input-bar::placeholder{
