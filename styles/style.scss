@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
-//font-family: 'Space Mono', monospace;
-
 @import './var';
 
+//style reset
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+//general styling
 body{
     background-color: $light-grayish-cyan;
     display: flex;
@@ -19,7 +19,7 @@ body,button,input{
     font-family: 'Space Mono', monospace;
 }
 button,input,.result-value{
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 input{
     text-align: right;
@@ -52,13 +52,13 @@ header{
 }
 .section-name{
     color: $dark-grayish-cyan;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 
+//main content styling
 .main-content{
     margin-top: 2.5rem;
-    //min-height: 100vh;
     width: 100%;
     max-width: 375px;
     background-color: $white;
@@ -92,23 +92,41 @@ header{
                 color: $very-dark-cyan;
             }
         }
+        button.active{
+            background-color: $strong-cyan;
+            color: $very-dark-cyan;
+            &:hover{
+                cursor: pointer;
+                background-color: $strong-cyan;
+                color: $very-dark-cyan;
+            }
+        }
     }
-
+    
+    #label-wrapper{
+            display: flex;
+            justify-content: space-between;
+            .input-alert{
+                color: red;
+                font-size: 1rem;
+            }
+    }
+    
     .result-section{
         background-color: $very-dark-cyan;
         border-radius: 20px;
         padding: 1.5rem;
         h3{
-            font-size: 16px;
+            font-size: 1rem;
             color: $light-grayish-cyan;
         }
         p{
             color: $grayish-cyan;
-            font-size: 12px;
+            font-size: 0.75rem;
             word-spacing: 1px;
         }
         .result-value{
-            font-size: 40px;
+            font-size: 2.5rem;
             color: $strong-cyan;
         }
         .result{
@@ -125,9 +143,13 @@ header{
             border-radius: 5px;
             border: none;
             padding: 0.5rem;
+            background-color: hsla(186, 100%, 20%, 1);
+            color: $very-dark-cyan;
+            font-size: 1.25rem;
+        }
+        button.calc-active{
             background-color: $strong-cyan;
             color: $very-dark-cyan;
-            font-size: 20px;
             &:hover{
                 cursor: pointer;
                 background-color: $light-grayish-cyan;
@@ -138,34 +160,4 @@ header{
     
 }
 
-@media only screen and (min-width: 940px){
-    body{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .main-content{
-        max-width: 1000px;
-        height: 500px;
-        margin: 5rem auto;
-        padding: 3rem;
-        display: flex;
-        .input-section{
-            flex-basis: 50%;
-            
-        }
-        .result-section{
-            flex-basis: 50%;
-            margin-left: 4rem;
-            padding: 3rem;
-            .reset-btn{
-                margin-top: 5rem;
-            }
-        }
-        .option-wrapper{
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-}
+@import './mediaQueries'

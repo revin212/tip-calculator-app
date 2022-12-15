@@ -2,27 +2,14 @@ const billInput = document.querySelector('#bill-input');
 const pplInput = document.querySelector('#number-people');
 const optionWrapper = document.querySelector('.option-wrapper');
 const options = optionWrapper.getElementsByClassName('tip-option');
-// const tip1 = document.querySelector('#option-1');
-// const tip2 = document.querySelector('#option-2');
-// const tip3 = document.querySelector('#option-3');
-// const tip4 = document.querySelector('#option-4');
-// const tip5 = document.querySelector('#option-5');
 const customTip = document.querySelector('#custom-tip');
 const result1 = document.querySelector('#result-1');
 const result2 = document.querySelector('#result-2');
 const resetButton = document.querySelector('#reset-btn');
-const labelPpl = document.querySelector('#label-people');
-const inputWrapper = document.getElementsByTagName('input');
+const labelPpl = document.querySelector('#label-wrapper');
 
-
-// function useValue(element) {
-//     let inputValue = element.value;
-// }
-// billInput.onchange = useValue(billInput);
-// pplInput.onchange = useValue(pplInput);
-// customTip.onchange = useValue(customTip);
 let bill = 0;
-let ppl = 1;
+let ppl = 0;
 let tip = 0;
 let tipAmount = 0;
 let total = 0;
@@ -34,24 +21,56 @@ const percent = {
     '50%': 0.5,
 };
 
-for(let i=0; i<inputWrapper.length; i++){
-    inputWrapper[i].addEventListener('blur', function(){
-        bill = Number(billInput.value);
+
+billInput.addEventListener('blur', function(){
+    bill = Number(billInput.value);
+    //console.log('blurEvent')
+    //console.log(bill, ppl, tip, tipAmount, total);
+})
+
+customTip.addEventListener('blur', function(){
+    tip = Number(customTip.value)/100;
+    //console.log('blurEvent');
+    //console.log(bill, ppl, tip, tipAmount, total);
+})
+
+pplInput.addEventListener('blur', function(){
+    let labels = labelPpl.getElementsByTagName('h3');
+    if(pplInput.value === "" || pplInput.value == 0){
+        for(let i=0; i<labels.length; i++){
+            if(labels[i].classList.contains('input-alert')){
+                labels[i].remove();
+            }
+        }
+        let inputAlert = document.createElement('h3');
+        inputAlert.classList.add('input-alert');
+        inputAlert.innerText = "Can't be zero";
+        pplInput.style.border = "solid 1px red";
+        document.getElementById('label-wrapper').appendChild(inputAlert);
+        //console.log('blurEvent-alert');
+    }else{
+        pplInput.style.border = "none";
+        for(let i=0; i<labels.length; i++){
+            if(labels[i].classList.contains('input-alert')){
+                labels[i].remove();  
+            }
+        }
         ppl = Number(pplInput.value);
-        tip = Number(customTip.value)/100;
-        console.log('blurEvent');
-        console.log(bill, ppl, tip, tipAmount, total);
-    })
-}
+        //console.log('blurEvent');
+        //console.log(bill, ppl, tip, tipAmount, total);
+    }
+})
 
 for(let i=0; i<options.length; i++){
     options[i].addEventListener('click', function() {
         if(this.classList.contains("active")){
             this.classList.remove("active");
             this.parentElement.classList.remove("parent-active");
-            console.log('tip button toggle off');
+            resetButton.classList.remove("calc-active");
+            //console.log('tip button toggle off');
         }else {
             this.parentElement.classList.add("parent-active");
+            resetButton.classList.add("calc-active");
             for(let j=0; j<options.length; j++){
                 if(options[j].classList.contains('active')){
                     options[j].classList.remove('active');
@@ -59,12 +78,13 @@ for(let i=0; i<options.length; i++){
             }            
             this.classList.add("active");
             tip = Number(percent[this.innerText]);
-            console.log('tip button toggle on');
+            //console.log('tip button toggle on');
         }
     })
 }
 customTip.addEventListener('click', function(){
     customTip.parentElement.classList.add("parent-active");
+    resetButton.classList.add("calc-active");
     for(let j=0; j<options.length; j++){
         if(options[j].classList.contains('active')){
             options[j].classList.remove('active');
@@ -72,35 +92,44 @@ customTip.addEventListener('click', function(){
     } 
     customTip.classList.add('active');
     tip = Number(customTip.value)/100;
-    console.log('tip button custom');
+    //console.log('tip button custom');
 })
 
 resetButton.addEventListener('click', function(){
     bill = 0;
-    ppl = 1;
+    ppl = 0;
     tip = 0;
     tipAmount = 0;
     total = 0;
     optionWrapper.classList.remove("parent-active");
+    resetButton.classList.remove("calc-active");
+    pplInput.style.border = "none";
     for(let j=0; j<options.length; j++){
         if(options[j].classList.contains('active')){
             options[j].classList.remove('active');
         }
-    } 
+    }
+    let labels = labelPpl.getElementsByTagName('h3');
+    for(let i=0; i<labels.length; i++){
+        if(labels[i].classList.contains('input-alert')){
+            labels[i].remove();
+            pplInput.style.outlineColor = "none";
+        }
+    }
+
     billInput.value = "";
     pplInput.value = "";
     customTip.value = "";
-    console.log('reset button clicked');
+    //console.log('reset button clicked');
 })
 
 const calcTip = function() {
     tipAmount = bill*tip/ppl;
-    total = (bill/ppl) + tipAmount;
-    // if(tip1.classList.contains("active") || tip1.siblings().classList.contains("active")){
-    //     tipButtons.addClass("active");
-    // } else tipButtons.removeClass("active");
-    //console.log(optionWrapper.classList.contains("active"));
-    if(optionWrapper.classList.contains("parent-active")){
+    tipAmount = tipAmount.toFixed(2);
+    total = (bill/ppl) + Number(tipAmount);
+    total = total.toFixed(2);
+    
+    if(optionWrapper.classList.contains("parent-active") && ppl>0){
         result1.innerText = `$${String(tipAmount)}`;
         result2.innerText = `$${String(total)}`;
     } else {
@@ -109,55 +138,4 @@ const calcTip = function() {
     }
 }
 
-//window.setInterval(calcTip, 200);
-// while(true){
-//     calcTip();
-// }
-
-const inputAlert = function() {
-    if(pplInput.value === "" || pplInput.value == 0){
-    let inputAlert = document.createElement('h3');
-    inputAlert.classList.add('input-alert');
-    inputAlert.innerText = "Can't be zero";
-    document.getElementById('number-people').classList.add('alert-state');
-    // if(tidak ada class input-alert maka appendChild)
-    //document.getElementById('label-wrapper').appendChild(inputAlert);
-    
-}else calcTip();
-}
-
-// setInterval(inputAlert, 100);
 setInterval(calcTip,100);
-
-// tip1.addEventListener('click', ()=> {
-//     tip1.classList.toggle("active");
-//     if(tip1.classList.contains("active")){
-//         tip = Number(percent[tip1.innerText]);
-//     } else tip = 0;
-// })
-// tip2.addEventListener('click', ()=> {
-//     tip2.classList.toggle("active");
-//     if(tip2.classList.contains("active")){
-//         tip = Number(percent[tip2.innerText]);
-//     } else tip = 0;
-// })
-// tip3.addEventListener('click', ()=> {
-//     tip3.classList.toggle("active");
-//     if(tip3.classList.contains("active")){
-//         tip = Number(percent[tip3.innerText]);
-//     } else tip = 0;
-// })
-// tip4.addEventListener('click', ()=> {
-//     tip4.classList.toggle("active");
-//     if(tip4.classList.contains("active")){
-//         tip = Number(percent[tip4.innerText]);
-//     } else tip = 0;
-// })
-// tip5.addEventListener('click', ()=> {
-//     tip5.classList.toggle("active").siblings().removeClass("active");
-//     if(tip5.classList.contains("active")){
-//         tip = Number(percent[tip5.innerText]);
-//     } else tip = 0;
-// })
-
-

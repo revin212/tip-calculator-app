@@ -17,7 +17,7 @@ body, button, input {
 }
 
 button, input, .result-value {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 input {
@@ -74,7 +74,7 @@ header {
 
 .section-name {
   color: hsl(186deg, 14%, 43%);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .main-content {
@@ -113,22 +113,39 @@ header {
   background-color: hsl(185deg, 41%, 84%);
   color: hsl(183deg, 100%, 15%);
 }
+.main-content .option-wrapper button.active {
+  background-color: hsl(172deg, 67%, 45%);
+  color: hsl(183deg, 100%, 15%);
+}
+.main-content .option-wrapper button.active:hover {
+  cursor: pointer;
+  background-color: hsl(172deg, 67%, 45%);
+  color: hsl(183deg, 100%, 15%);
+}
+.main-content #label-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.main-content #label-wrapper .input-alert {
+  color: red;
+  font-size: 1rem;
+}
 .main-content .result-section {
   background-color: hsl(183deg, 100%, 15%);
   border-radius: 20px;
   padding: 1.5rem;
 }
 .main-content .result-section h3 {
-  font-size: 16px;
+  font-size: 1rem;
   color: hsl(185deg, 41%, 84%);
 }
 .main-content .result-section p {
   color: hsl(184deg, 14%, 56%);
-  font-size: 12px;
+  font-size: 0.75rem;
   word-spacing: 1px;
 }
 .main-content .result-section .result-value {
-  font-size: 40px;
+  font-size: 2.5rem;
   color: hsl(172deg, 67%, 45%);
 }
 .main-content .result-section .result {
@@ -145,22 +162,23 @@ header {
   border-radius: 5px;
   border: none;
   padding: 0.5rem;
+  background-color: hsl(186deg, 100%, 20%);
+  color: hsl(183deg, 100%, 15%);
+  font-size: 1.25rem;
+}
+.main-content .result-section button.calc-active {
   background-color: hsl(172deg, 67%, 45%);
   color: hsl(183deg, 100%, 15%);
-  font-size: 20px;
 }
-.main-content .result-section .reset-btn:hover {
+.main-content .result-section button.calc-active:hover {
   cursor: pointer;
   background-color: hsl(185deg, 41%, 84%);
   color: hsl(183deg, 100%, 15%);
 }
 
-@media only screen and (min-width: 940px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@media only screen and (min-width: 700px) {
+  html {
+    font-size: 85%;
   }
   .main-content {
     max-width: 1000px;
@@ -172,15 +190,20 @@ header {
   .main-content .input-section {
     flex-basis: 50%;
   }
+  .main-content .option-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .main-content .result-section {
     flex-basis: 50%;
     margin-left: 4rem;
     padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .main-content .result-section .reset-btn {
-    margin-top: 5rem;
-  }
-  .main-content .option-wrapper {
-    grid-template-columns: repeat(3, 1fr);
+}
+@media only screen and (min-width: 900px) {
+  html {
+    font-size: 100%;
   }
 }/*# sourceMappingURL=style.css.map */

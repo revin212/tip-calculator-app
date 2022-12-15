@@ -1,0 +1,32 @@
+@media only screen and (min-width: 700px){
+    html{
+        font-size: 85%;
+    }
+    .main-content{
+        max-width: 1000px;
+        height: 500px;
+        margin: 5rem auto;
+        padding: 3rem;
+        display: flex;
+        .input-section{
+            flex-basis: 50%;
+        }
+        .option-wrapper{
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .result-section{
+            flex-basis: 50%;
+            margin-left: 4rem;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media only screen and (min-width: 900px){
+    html{
+        font-size: 100%;
+    }
+}
