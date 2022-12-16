@@ -22,19 +22,25 @@ const percent = {
 };
 
 
-billInput.addEventListener('blur', function(){
+billInput.addEventListener('keyup', function(){
     bill = Number(billInput.value);
+    optionWrapper.classList.add("parent-active");
+    resetButton.classList.add("calc-active");
     //console.log('blurEvent')
     //console.log(bill, ppl, tip, tipAmount, total);
 })
 
-customTip.addEventListener('blur', function(){
+customTip.addEventListener('keyup', function(){
     tip = Number(customTip.value)/100;
+    optionWrapper.classList.add("parent-active");
+    resetButton.classList.add("calc-active");
     //console.log('blurEvent');
     //console.log(bill, ppl, tip, tipAmount, total);
 })
 
-pplInput.addEventListener('blur', function(){
+pplInput.addEventListener('keyup', function(){
+    optionWrapper.classList.add("parent-active");
+    resetButton.classList.add("calc-active");
     let labels = labelPpl.getElementsByTagName('h3');
     if(pplInput.value === "" || pplInput.value == 0){
         for(let i=0; i<labels.length; i++){
@@ -65,8 +71,7 @@ for(let i=0; i<options.length; i++){
     options[i].addEventListener('click', function() {
         if(this.classList.contains("active")){
             this.classList.remove("active");
-            this.parentElement.classList.remove("parent-active");
-            resetButton.classList.remove("calc-active");
+            tip = 0;
             //console.log('tip button toggle off');
         }else {
             this.parentElement.classList.add("parent-active");
@@ -77,13 +82,14 @@ for(let i=0; i<options.length; i++){
                 }
             }            
             this.classList.add("active");
+            customTip.value = "";
             tip = Number(percent[this.innerText]);
             //console.log('tip button toggle on');
         }
     })
 }
 customTip.addEventListener('click', function(){
-    customTip.parentElement.classList.add("parent-active");
+    optionWrapper.classList.add("parent-active");
     resetButton.classList.add("calc-active");
     for(let j=0; j<options.length; j++){
         if(options[j].classList.contains('active')){
